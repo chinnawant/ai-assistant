@@ -130,3 +130,8 @@ cython_debug/
 
 # VS Code
 .vscode/
+
+On-demand+Integration.pdf
+chroma-db/
+testing/
+.DS_Store
