@@ -1,4 +1,3 @@
-
 # Project Title
     AI Language Model for internal data in the company
 
@@ -16,7 +15,6 @@ To install the required dependencies, run:
   pip install --upgrade pip
   pip install -r requirements.txt
 ```
-
 ## How to start the project
 1. Active the virtual environment:
 ```bash
@@ -32,3 +30,4 @@ To install the required dependencies, run:
 ```bash
     langflow run
 ```
+
