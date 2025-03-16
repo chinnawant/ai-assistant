@@ -3,29 +3,31 @@
 ```mermaid
 
 
-flowchart TB
-    c1["chat"] -- 1.MR --> sa1[Agent]
-    
-    subgraph sa1[Agent GitLab]
-        a1 --2.Query--> ta1-l1["Query MR"]
-        a1 --> ta1-l2["Command MR"]
+flowchart TD
+    c1["chat"] -- MR --> sa1[Agent]
+
+
+    subgraph sa1[Supervisor agent]
     end
-    
 
-
-    a1[Agent] --3.MR Detail--> sa2[Agent]
+    subgraph gh1[GitHub agent]
+			a1["Agent"] --Query--> ta1-l1["Query MR"]
+			a1 --"Comment"--> ta1-l2["Command MR"]
+    end
     subgraph sa2[Agent R and D]
-      s2 -- 4.Query --> ta2-l1[Git]
-      s2 -- 4.Query --> ta2-l2[RAg]
+      a2["Agent"] --Query--> ta2-l1["Git"]
+      a2 --Query--> ta2-l2["RAG"]
     end
-    
-    sa2 -- 5.Context MR + R&D--> sa3[Agent Review code]
-    sa3 -- 6.Content Review --> sa4[Agent]
-    subgraph s4[Agent writing]
-        sa4 --> ta4-l1["Mrkdown"]
+
+    subgraph sa3[Agent Review Code]
+      a3["Agent"] --Analyze--> ta3-l1["Code Analysis"]
+      a3 --Generate--> ta3-l2["Review Comments"]
     end
-    
-    s4 -- 7.Commit MR--> sa1
+
+		sa1 --> sa2
+		sa1 --> gh1
+		sa1 --> sa3
+
 
 
     
